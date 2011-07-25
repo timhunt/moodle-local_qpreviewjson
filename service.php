@@ -6,6 +6,8 @@ require_once('lib.php');
 $action = required_param('action', PARAM_ACTION);
 $questionid = required_param('question_id', PARAM_INT);
 
+$wrapperfn = optional_param('callback', null, PARAM_RAW);
+
 if ($action != 'start') {
 	$qubaid = required_param('quba_id', PARAM_INT);
 } else {
@@ -38,4 +40,11 @@ switch ($action) {
 
 header('Content-Type: application/json');
 //header('Content-Type: text/plain');
-echo json_encode($server->get_current_state());
+
+$json = json_encode($server->get_current_state());
+
+if ($wrapperfn) {
+	echo $wrapperfn . '(' . $json . ')';
+} else {
+	echo $json;
+}
