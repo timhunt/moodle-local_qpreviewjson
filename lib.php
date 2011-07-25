@@ -48,7 +48,7 @@ class local_qpreviewjson {
 		$steps = array();
 		foreach ($this->quba->get_question_attempt(1)->get_step_iterator() as $step) {
 			$steps[] = array(
-				'state' => $step->get_state(),
+				'state' => $step->get_state()->__toString(),
 				'fraction' => $step->get_fraction(),
 				'user_id' => $step->get_user_id(),
 				'timecreated' => $step->get_timecreated(),
