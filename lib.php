@@ -36,7 +36,7 @@ class local_qpreviewjson {
 		return array(
 			'behaviour' => $qa->get_behaviour_name(),
 			'is_flagged' => $qa->is_flagged(),
-			'previx' => $qa->get_field_prefix(),
+			'prefix' => $qa->get_field_prefix(),
 			'max_mark' => $qa->get_max_mark(),
 			'min_fraction' => $qa->get_min_fraction(),
 			'question_summary' => $qa->get_question_summary(),
