@@ -36,7 +36,7 @@ class local_qpreviewjson {
 		return array(
 			'behaviour' => $qa->get_behaviour_name(),
 			'is_flagged' => $qa->is_flagged(),
-			'previx' => $qa->get_field_prefix(),
+			'prefix' => $qa->get_field_prefix(),
 			'max_mark' => $qa->get_max_mark(),
 			'min_fraction' => $qa->get_min_fraction(),
 			'question_summary' => $qa->get_question_summary(),
@@ -88,13 +88,16 @@ class local_qpreviewjson {
 	}
 
 	public function finish_preview() {
-		global $DB;
+		global $DB, $PAGE;
+		
+		$context = get_context_instance(CONTEXT_SYSTEM); //TODO
+		$PAGE->set_context($context);
 
 		$this->quba->process_all_actions();
         $this->quba->finish_all_questions();
 
         $transaction = $DB->start_delegated_transaction();
-        question_engine::save_questions_usage_by_activity($quba);
+        question_engine::save_questions_usage_by_activity($this->quba);
         $transaction->allow_commit();
 	}
 }

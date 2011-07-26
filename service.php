@@ -1,4 +1,19 @@
 <?php
+/**
+ * see http://docs.moodle.org/dev/Overview_of_the_Moodle_question_engine for documentation
+ * TODO:
+ * 	- authentication
+ *  - quiz rather than single question
+ *  - question text including images and media
+ *  - all question types not just multiple choice
+ *  - all question behaviours not just "deferred feedback"
+ *  - look at context
+ *  - Moodle renderers - ensure capturing all important functions
+ *  - documentation for when new question type is created
+ *  - unit testing through OAE front-end
+ *  - expose other parts of Moodle functionality (authoring, etc)
+ */
+
 require_once('../../config.php');
 
 require_once('lib.php');
